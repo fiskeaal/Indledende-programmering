@@ -6,23 +6,20 @@ namespace Indledende_programmering
     {
         static void Main(string[] args)
         {
-            int x = 0;
-
+            int swi = 0;
             while (true)
             {
                 Console.Clear();
                 Console.WriteLine("Hilken opgave vil du gerne se, skriv et tal fra 1 til 10.");
                 Console.WriteLine("Hvis du ikke vil se flere opgaver skal du bare skrive \"stop\".");
                 String opgave = Console.ReadLine().ToLower();
-                
-                
                 if (opgave == "stop")
                 {
                     break;
                 }
                 try
                 {
-                    x = Convert.ToInt32(opgave);
+                    swi = Convert.ToInt32(opgave);
                 }
                 catch (Exception)
                 {
@@ -30,15 +27,13 @@ namespace Indledende_programmering
                     Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
                     Console.ReadKey();
                 }
-                
-                switch (x)
+                switch (swi)
                 {
                     case 1:
                         double modstand = 0; 
                         double volt = 0;
                         double amp = 0;
                         double ohm = 0;
-
                         Console.WriteLine("Ohms lov");
                         Console.WriteLine("Hvad vil du regne ud, for strømstyrke (i ampare) skriv 1, for spænding (i volt) skriv 2, for modstand (i ohm) skriv 3");
                         string udregn1 = Console.ReadLine();
@@ -103,7 +98,6 @@ namespace Indledende_programmering
                         {
                             Console.WriteLine("Hvor stor er diameteren?");
                             Console.WriteLine(Convert.ToDouble(Console.ReadLine()) * Math.PI);
-
                         }
                         else if (udregn2 == "a")
                         {
@@ -116,7 +110,6 @@ namespace Indledende_programmering
                             {
                                 Console.WriteLine("Du kan kun skrive tal");
                             }
-
                         }
                         else
                         {
@@ -203,7 +196,6 @@ namespace Indledende_programmering
                                 Console.WriteLine("Du kan kun skrive tal");
                             }
                         }
-
                         Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
                         Console.ReadKey();
                         break;
@@ -211,24 +203,31 @@ namespace Indledende_programmering
                         Console.WriteLine("Talrække");
                         Console.WriteLine("Skal talrækken være positiv eller negativ? (p/n)");
                         string p_n = Console.ReadLine().ToLower();
-                        Console.WriteLine("Hvor lang skal den være?");
-                        string længde = Console.ReadLine();
                         try
                         {
-                            int tal = Convert.ToInt32(længde);
                             if (p_n == "n")
                             {
-                                for (int i = tal; i > 0; i--)
+                                Console.WriteLine("Hvor lang skal den være?");
+                                string længde1 = Console.ReadLine();
+                                int tal1 = Convert.ToInt32(længde1);
+                                for (int i = tal1; i > 0; i--)
                                 {
                                     Console.Write(i + ", ");
                                 }
                             }
-                            if (p_n == "p")
+                            else if (p_n == "p")
                             {
-                                for (int i = 1; i <= tal; i++)
+                                Console.WriteLine("Hvor lang skal den være?");
+                                string længde2 = Console.ReadLine();
+                                int tal2 = Convert.ToInt32(længde2);
+                                for (int i = 1; i <= tal2; i++)
                                 {
                                     Console.Write(i + ", ");
                                 }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Du kan kun skrive p eller n");
                             }
                         }
                         catch (Exception)
@@ -240,22 +239,186 @@ namespace Indledende_programmering
                         Console.ReadKey();
                         break;
                     case 6:
-                        Console.WriteLine("case 6");
+                        Console.Clear();
+                        Console.WriteLine("Enkelt ramme");
+                        Console.WriteLine("Hvor stor skal rammen være? Skriv x og y kordinat for første hjørne, derefter x og y for andet hjørne.");
+                        Console.WriteLine("første kordinat skal være mindre end andet kordinat");
+                        int hjørne1x;
+                        int hjørne1y;
+                        int hjørne2x;
+                        int hjørne2y;
+                        try
+                        {
+                            swi = Convert.ToInt32(opgave);
+                            hjørne1x = Convert.ToInt32(Console.ReadLine());
+                            hjørne1y = Convert.ToInt32(Console.ReadLine());
+                            hjørne2x = Convert.ToInt32(Console.ReadLine());
+                            hjørne2y = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Du kan kun skrive tal");
+                            Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                            Console.ReadKey();
+                            break;
+                        }
+                        int x = hjørne1x;
+                        int y = hjørne1y;
+                        int interval = 0;
+                        
+                        Console.SetCursorPosition(4,4);
+                        for (y = hjørne1y; y < hjørne2y - 1; y++)
+                        {
+                            Console.SetCursorPosition(x, y);
+                            Console.WriteLine("║");
+                        }
+                        //y++;
+                        Console.SetCursorPosition(x, y);
+                        Console.WriteLine("╚");
+                        for (x = hjørne1x + 1; x < hjørne2x - 2; x++)
+                        {
+                            Console.SetCursorPosition(x, y);
+                            Console.WriteLine("═");
+                        }
+                        Console.SetCursorPosition(x, y);
+                        //x++;
+                        Console.WriteLine("╝");
+                        for (y = hjørne2y - 2; y > hjørne1y; y--)
+                        {
+                            Console.SetCursorPosition(x, y);
+                            Console.WriteLine("║");
+                        }
+                        //y --;
+                        Console.SetCursorPosition(x, y);
+                        Console.WriteLine("╗");
+                        for (x = hjørne2x - 3; x > hjørne1x; x--)
+                        {
+                            Console.SetCursorPosition(x, y);
+                            Console.WriteLine("═");
+                        }
+                        //x--;
+                        Console.SetCursorPosition(x, y);
+                        Console.WriteLine("╔");
+                        Console.SetCursorPosition(1, hjørne2y + 5);
+                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                        Console.ReadKey();
                         break;
                     case 7:
-                        Console.WriteLine("case 7");
+                        Console.WriteLine("Opgave 7: Tabel");
+                        Console.WriteLine("Hvilken tabel vil de gerne se?");
+                        try
+                        {
+                            int tabeltal = Convert.ToInt32(Console.ReadLine());
+                            int tabel = tabeltal;
+                            for (int i = 0; i < 10; i++)
+                            {
+                                Console.Write(tabel + ", ");
+                                tabel += tabeltal;
+                                
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Du kan kun skrive tal");
+                            Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                            Console.ReadKey();
+                            break;
+                        }
+                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                        Console.ReadKey();
                         break;
                     case 8:
-                        Console.WriteLine("case 8");
+                        Console.WriteLine("Opgave 8: Arealberegning");
+                        Console.WriteLine("Hvad vil du gerne beregne arealet af, for cirkel skriv 1, trekant 2, rektangel 3.");
+                        try
+                        {
+                            int beregn = Convert.ToInt32(Console.ReadLine());
+                            if (beregn == 1)
+                            {
+                                Console.WriteLine("hvad er radius?");
+                                Console.WriteLine(cirkelberegner(Convert.ToDouble(Console.ReadLine())));
+                            }
+                            else if (beregn == 2)
+                            {
+                                Console.WriteLine("hvad er højden og bredden?");
+                                Console.WriteLine(trekantsberegner(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine())));
+                            }
+                            else if (beregn == 3)
+                            {
+                                Console.WriteLine("hvad er længden og bredden?");
+                                Console.WriteLine(rektangelberegner(Convert.ToDouble(Console.ReadLine()), Convert.ToDouble(Console.ReadLine())));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Du skal skrive et tal imellem 1 og 3.");
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Du kan kun skrive tal");
+                            Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                            Console.ReadKey();
+                            break;
+                        }
+                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                        Console.ReadKey();
                         break;
                     case 9:
-                        Console.WriteLine("case 9");
+                        string navn = "tore";
+                        int gæt = 0;
+                        while (true)
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Opgave 9: Gæt mit navn");
+                            Console.WriteLine("Bare skriv dit gæt");
+                            if (Console.ReadLine().ToLower() == navn)
+                            {
+                                Console.WriteLine("Tillykke du gættede det :)");
+                                break;
+                            }
+                            else
+                            {
+                                gæt++;
+                                Console.WriteLine("Desværre forkert :(");
+                                Console.WriteLine("Du er oppe på " + gæt + " gæt.");
+                                Console.WriteLine("prøv igen");
+                                Console.WriteLine("Tryk på enter for at prøve igen, skriv stop for at stoppe");
+                                if (Console.ReadLine().ToLower() == "stop")
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                        Console.ReadKey();
                         break;
                     case 10:
-                        Console.WriteLine("case 10");
+                        Console.WriteLine("case 10: kommer snart, bare rolig");
+                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
+                        Console.ReadKey();
+                        break;
+                    default:
                         break;
                 }
             }
+        }
+        static double cirkelberegner(double radius)
+        {
+
+            double areal = (Math.Pow(radius, 2) * Math.PI);
+            return areal;
+        }
+        static double trekantsberegner (double højde, double bredde)
+        {
+
+            double areal = (højde * bredde) / 2;
+            return areal;
+        }
+        static double rektangelberegner(double længde, double bredde)
+        {
+
+            double areal = længde * bredde;
+            return areal;
         }
     }
 }

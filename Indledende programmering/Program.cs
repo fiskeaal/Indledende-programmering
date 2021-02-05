@@ -6,11 +6,12 @@ namespace Indledende_programmering
     {
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.Green;
             int swi = 0;
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("Hilken opgave vil du gerne se, skriv et tal fra 1 til 10.");
+                Console.WriteLine("Hilken opgave vil du gerne se, skriv et tal fra 1 til 9.");
                 Console.WriteLine("Hvis du ikke vil se flere opgaver skal du bare skrive \"stop\".");
                 String opgave = Console.ReadLine().ToLower();
                 if (opgave == "stop")
@@ -132,11 +133,13 @@ namespace Indledende_programmering
                             }
                             else if (km >= 25 && km <= 100)
                             {
-                                Console.WriteLine(km * 1.54 + " kr.");
+                                Console.WriteLine((km - 24) * 1.54 + " kr.");
                             }
                             else if (km > 100)
                             {
-                                Console.WriteLine(km * 0.77 + " kr.");
+                                double pris = 76 * 1.54;
+                                pris += ((km - 100) * 0.77);
+                                Console.WriteLine("{0:0.00} kr.", pris);
                             }
                         }
                         catch (Exception)
@@ -389,11 +392,6 @@ namespace Indledende_programmering
                                 }
                             }
                         }
-                        Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
-                        Console.ReadKey();
-                        break;
-                    case 10:
-                        Console.WriteLine("case 10: kommer snart, bare rolig");
                         Console.WriteLine("Tryk på en vilkårelig tast for at fortsætte");
                         Console.ReadKey();
                         break;
